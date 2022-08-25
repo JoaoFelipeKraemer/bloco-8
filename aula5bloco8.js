@@ -38,13 +38,84 @@
 
 // spread
 
-const point = [1.0, 2.2, -6.6];
-const otherPoint = [0.1, 3.5, -99.6]
+// const point = [1.0, 2.2, -6.6];
+// const otherPoint = [0.1, 3.5, -99.6]
 
-const printPointsCordinates = (x, y, z) => `point cordinates are x = ${x}, y = ${y} and z = ${z} `;
+// const printPointsCordinates = (x, y, z) => `point cordinates are x = ${x}, y = ${y} and z = ${z} `;
 
-console.log(printPointsCordinates(...point));
+// console.log(printPointsCordinates(...point));
 
-console.log(printPointsCordinates(...otherPoint));
+// console.log(printPointsCordinates(...otherPoint));
+
+//rest a dirença: 
+
+// [1, 2]
+// [1, 2, 3]
+// [1, 2, 3, 4]
+
+// const sumAll = (values) => {
+//     let sum = 0;
+//     values.forEach((value) => {
+//         sum += value;
+//     })
+//     return sum
+// }
+///com reduce
+
+const sumAll = (...values) => {
+    return values.reduce((acc, curr) => {
+        return acc + curr;
+    })
+}
 
 
+
+console.log(sumAll(1, 2))
+console.log(sumAll(1, 2, 3))
+
+//sem rest
+// const formaDate = (year, month, day, hour, minute, second) => {
+//     return ` ${day}/${month}/${year} `
+// }
+
+
+// console.log(formaDate('1991', '7', '31', '22', '46', '12'))
+///com spread
+const dateInfo = ['1991', '7', '31', '22', '46', '12'];
+
+// console.log(formaDate(...dateInfo));
+
+//com rest
+// const formaDate = (year, month, day, ...rest) => {
+//     return ` ${day}/${month}/${year} - ${rest[0]}:${rest[1]}:${rest[2]} `
+// }
+// console.log(formaDate(...dateInfo));
+
+
+//com rest e join
+
+// const formaDate = (year, month, day, ...rest) => {
+//     return ` ${day}/${month}/${year} - ${rest.join(':')} `
+// }
+// console.log(formaDate(...dateInfo));
+
+// refatorando
+
+const formaDate = (year, month, day, ...rest) => ` ${day}/${month}/${year} - ${rest.join(':')} `
+console.log(formaDate(...dateInfo));
+
+
+
+///default params
+
+// faça uma função que receba 1 numero  e retorne esse numero multiplicado por um
+//fator se nenhum fator for passado a função deve retornar numero x 1
+
+
+const multiply = (number, factor = 1) => { // adiciona o 1
+return number * factor;
+
+}
+
+console.log(multiply(9))
+console.log(multiply(9,2))
